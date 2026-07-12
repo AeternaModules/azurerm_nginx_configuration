@@ -18,14 +18,14 @@ EOT
     nginx_deployment_id = string
     root_file           = string
     package_data        = optional(string)
-    config_file = optional(object({
+    config_file = optional(list(object({
       content      = string
       virtual_path = string
-    }))
-    protected_file = optional(object({
+    })))
+    protected_file = optional(list(object({
       content      = string
       virtual_path = string
-    }))
+    })))
   }))
 }
 

@@ -6,7 +6,7 @@ resource "azurerm_nginx_configuration" "nginx_configurations" {
   package_data        = each.value.package_data
 
   dynamic "config_file" {
-    for_each = each.value.config_file != null ? [each.value.config_file] : []
+    for_each = each.value.config_file != null ? each.value.config_file : []
     content {
       content      = config_file.value.content
       virtual_path = config_file.value.virtual_path
@@ -14,7 +14,7 @@ resource "azurerm_nginx_configuration" "nginx_configurations" {
   }
 
   dynamic "protected_file" {
-    for_each = each.value.protected_file != null ? [each.value.protected_file] : []
+    for_each = each.value.protected_file != null ? each.value.protected_file : []
     content {
       content      = protected_file.value.content
       virtual_path = protected_file.value.virtual_path
