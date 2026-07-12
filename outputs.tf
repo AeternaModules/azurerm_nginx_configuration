@@ -1,3 +1,7 @@
+output "nginx_configurations_id" {
+  description = "Map of id values across all nginx_configurations, keyed the same as var.nginx_configurations"
+  value       = { for k, v in azurerm_nginx_configuration.nginx_configurations : k => v.id }
+}
 output "nginx_configurations_config_file" {
   description = "Map of config_file values across all nginx_configurations, keyed the same as var.nginx_configurations"
   value       = { for k, v in azurerm_nginx_configuration.nginx_configurations : k => v.config_file }
